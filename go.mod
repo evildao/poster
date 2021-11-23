@@ -1,4 +1,4 @@
-module poster
+module github.com/zhimiaox/poster/v1
 
 go 1.17
 

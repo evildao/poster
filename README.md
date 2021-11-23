@@ -11,7 +11,7 @@ import (
 	"image/color"
 	"io/fs"
 	"io/ioutil"
-	"github.com/zhimiaox/poster/poster"
+	"github.com/zhimiaox/poster/v1"
 
 	"github.com/golang/freetype"
 )
