@@ -1,4 +1,4 @@
-module t/poster
+module poster
 
 go 1.17
 

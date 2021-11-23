@@ -5,13 +5,10 @@ import (
 	"image"
 	"image/color"
 	"image/draw"
-	_ "image/gif"
 	_ "image/jpeg"
 	"image/png"
 	"io"
 	"log"
-
-	_ "golang.org/x/image/webp"
 
 	"github.com/anthonynsimon/bild/transform"
 	"github.com/golang/freetype"
@@ -79,12 +76,10 @@ func (p *posterImpl) DrawText(text string, pt image.Point, size float64, color c
 	fc.SetHinting(font.HintingFull)
 
 	fpt := freetype.Pt(pt.X, pt.Y)
-	pp, err := fc.DrawString(text, fpt)
-	// pp, err := fc.DrawString(text, freetype.Pt(pt.X, int(fc.PointToFixed(size)>>8)))
+	_, err := fc.DrawString(text, fpt)
 	if err != nil {
 		return err
 	}
-	log.Println(pp)
 	return nil
 }
 
