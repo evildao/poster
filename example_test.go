@@ -40,5 +40,5 @@ func ExamplePoster() {
 	_ = ptx.DrawImage(bytes.NewReader(file), image.Rect(-200, -550, 20, -650))
 
 	output := ptx.Output()
-	_ = ioutil.WriteFile("out.png", output, fs.ModePerm)
+	_ = ioutil.WriteFile("testdata/out.png", output, fs.ModePerm)
 }
