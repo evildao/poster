@@ -3,7 +3,7 @@
 封装了基本的绘制功能，绘制个基本海报还将就吧，更复杂的功能没有添加，原本是准备用在小程序上面的，后来感觉这玩意占用API服务器带宽，还不如在小程序端生成，就先这样吧，后面再有想法再改
 
 ```go
-package poster_test
+package main
 
 import (
 	"bytes"
@@ -16,7 +16,7 @@ import (
 	"github.com/golang/freetype"
 )
 
-func ExamplePoster() {
+func main() {
 	text := `中国执照的骄傲的司法局噢ID就仨覅哦`
 	// 字体装载，只支持ttf，部分不规范的ttf无法解析
 	file, _ := ioutil.ReadFile("testdata/FeiHuaSongTi-2.ttf")
