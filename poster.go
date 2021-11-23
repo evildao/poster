@@ -1,18 +1,22 @@
-package main
+package poster
 
 import (
 	"bytes"
 	"image"
 	"image/color"
 	"image/draw"
+	_ "image/gif"
+	_ "image/jpeg"
 	"image/png"
 	"io"
 	"log"
 
+	_ "golang.org/x/image/webp"
+
 	"github.com/anthonynsimon/bild/transform"
 	"github.com/golang/freetype"
 	"github.com/golang/freetype/truetype"
-	"github.com/fogleman/gg"
+	"golang.org/x/image/font"
 )
 
 type Poster interface {
@@ -70,15 +74,17 @@ func (p *posterImpl) DrawText(text string, pt image.Point, size float64, color c
 	// 设置目标图像
 	fc.SetDst(p.img)
 	// 设置绘制操作的源图像，通常为 image.Uniform
-	// fc.SetSrc(image.NewUniform(color))
-	fc.SetSrc(image.White)
-	pp, err := fc.DrawString(text, freetype.Pt(pt.X, pt.Y))
+	fc.SetSrc(image.NewUniform(color))
+	// fc.SetSrc(image.Black)
+	fc.SetHinting(font.HintingFull)
+
+	fpt := freetype.Pt(pt.X, pt.Y)
+	pp, err := fc.DrawString(text, fpt)
 	// pp, err := fc.DrawString(text, freetype.Pt(pt.X, int(fc.PointToFixed(size)>>8)))
 	if err != nil {
 		return err
 	}
 	log.Println(pp)
-	gg.NewContext(400, 400).DrawString()
 	return nil
 }
 
